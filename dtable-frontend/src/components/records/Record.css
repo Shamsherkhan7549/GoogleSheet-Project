@@ -1,0 +1,9 @@
+.status{
+  width: 130px;
+}
+
+.record{
+  display: block;
+  overflow-y: auto;
+  height: 250px !important;
+}
