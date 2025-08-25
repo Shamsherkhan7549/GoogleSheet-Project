@@ -2,7 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 const { JWT } = require('google-auth-library')
-const cred = require('./credentials.json')
+const dotenv  = require('dotenv')
+dotenv.config()
 
 const app = express()
 const port = 8080
@@ -16,8 +17,8 @@ const accesSheet = async () => {
 
     const serviceAccountAuth = new JWT({
 
-        email: cred.client_email,
-        key: cred.private_key,
+        email: process.env.GOOGLE_CLIENT_EMAIL,
+        key: process.env.GOOGLE_PRIVATE_KEY,
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
