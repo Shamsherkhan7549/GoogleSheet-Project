@@ -18,7 +18,7 @@ const accesSheet = async () => {
     const serviceAccountAuth = new JWT({
 
         email: process.env.GOOGLE_CLIENT_EMAIL,
-        key: process.env.GOOGLE_PRIVATE_KEY,
+        key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
         scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
@@ -43,6 +43,7 @@ app.get('/', (req, res) => {
 
 app.get('/data', async (req, res) => {
     try {
+       
         const sheet = await accesSheet()
         const rows = await sheet.getRows()
         res.json(rows.map(ele => ele._rawData))

@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import './Record.css'
+
 const Record = () => {
   const url = import.meta.env.VITE_API_URL
 

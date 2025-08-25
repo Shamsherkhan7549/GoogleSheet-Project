@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const Summaries = () => {
-  const url = 'http://localhost:8080/data'
+  const url = import.meta.env.VITE_API_URL
   const [response, setResponse] = useState([]);
   const [total, setTotal] = useState(0);
   const [pending, setPending] = useState(0);
@@ -14,7 +14,8 @@ const Summaries = () => {
 
   const fetchData = async () => {
     try {
-      const fetchData = await axios.get(url);
+      console.log(url);
+      const fetchData = await axios.get(url +'/data');
   
       setTotal(fetchData.data.length);
       setResponse(fetchData.data);
